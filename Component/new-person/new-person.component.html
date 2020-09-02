@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-12">
+        <form #f [formGroup]="InsertForm">
+
+
+            <div class="form-group" >
+                <label for="">Room</label>
+                <select formControlName="RoomID" class="form-control" [class.is-valid]="InsertForm.controls['RoomID'].valid "
+                    [class.is-invalid]="InsertForm.controls['RoomID'].invalid && InsertForm.controls['RoomID'].touched">
+                    <option *ngFor="let item of ListJob" value={{item.ID}}>{{item.Number}}</option>
+                </select>
+            </div>
+            <div [hidden]="InsertForm.controls['RoomID'].valid || InsertForm.controls['RoomID'].untouched "
+                class="alert alert-danger">
+                Room is required
+            </div>
+
+            <div class="form-group">
+                <label for="">From Date</label>
+                <input type="date" class="form-control" formControlName="FromDate" name="FromDate" id="FromDate"
+                    [class.is-valid]="InsertForm.controls['FromDate'].valid "
+                    [class.is-invalid]="InsertForm.controls['FromDate'].invalid && InsertForm.controls['FromDate'].touched">
+            </div>
+            <div [hidden]="InsertForm.controls['FromDate'].valid || InsertForm.controls['FromDate'].untouched "
+                class="alert alert-danger">
+                 start Date is required
+            </div>
+
+            <div class="form-group">
+                <label for="">To Date</label>
+                <input type="date" class="form-control" formControlName="ToDate" name="ToDate" id="ToDate"
+                    [class.is-valid]="InsertForm.controls['ToDate'].valid "
+                    [class.is-invalid]="InsertForm.controls['ToDate'].invalid && InsertForm.controls['ToDate'].touched">
+            </div>
+            <div [hidden]="InsertForm.controls['ToDate'].valid || InsertForm.controls['ToDate'].untouched "
+                class="alert alert-danger">
+                 End Date is required
+            </div>
+
+            <button type="submit" (click)="Add()" class="btn btn-danger p-1" [disabled]="InsertForm.invalid"
+                style="width: 100%;">ADD</button>
+        </form>
+    </div>
+
+</div>

@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row ">
+        <div class="input-group">
+            <input type="text" name="q" [(ngModel)]="TextSearch" class="form-control"
+                placeholder="Search For Any Data ...">
+            <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+    <!-- /.search form -->
+    <div class="row ">
+        <div class="col-md-4 col-sm-6" *ngFor="let item of ListPeople | filter:TextSearch " style="margin-top: 28px;">
+            <div class="box1 mt-4">
+                <h3 class="title">{{item.UserID}}</h3>
+                <ul class="icon">
+                    <!-- <li><a routerLink="/EditComputer/{{item.ID}}" routerLinkActive="active"><i class="fa fa-edit"></i></a></li> -->
+                    <li><a (click)="GitOneProduct(item.ID)" href="#detailsModal" class="details" data-toggle="modal"><i
+                                class="fa fa-arrows-alt"></i></a></li>
+                    <!-- <li><a href="#deleteModal{{item.ID}}" class="delete" data-toggle="modal"><i class="fa fa-eraser"></i></a></li> -->
+                    <li><a routerLink="" href="#"><i class="fa fa-bookmark-o"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="modal fade" id="detailsModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Person</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><b>ID : </b>{{person.UserID}}</li>
+                            <li class="list-group-item"><b>RoomID </b>{{person.RoomID}}</li>
+                            <li class="list-group-item"><b>FromDate : </b>{{person.FromDate}}</li>
+                            <li class="list-group-item"><b>ToDate : </b> {{person.ToDate}}</li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" style="width: 100%;"
+                            data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
